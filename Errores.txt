@@ -1,0 +1,10 @@
+void Start()
+    {
+        Destroy(this);
+        ChangeHealth(0);
+    }
+*Al iniciar nuestro juego la salud se cambia a 0, por lo que nos aparece la pantalla de que hemos perdido, y adicionalmente destruye el script sin permitir mover el personaje 
+*En el inspector en el player controller no tenia indicado el bullet 
+*Al igual que en el Mouse Sense tiene 0, lo cual no permite mover la camara
+*Enemy (1) y (2), no tenia la etiqueta enemy
+*El enemy (1) y enemy, no tenia el character controller activo en el inspector, el cual se esta usando para verificar la colision 
