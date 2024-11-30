@@ -97,20 +97,14 @@ public class PlayerController : MonoBehaviour
     {
         
         float horizontal = Input.GetAxis("Horizontal"); 
-        float vertical = Input.GetAxis("Vertical"); 
+        float vertical = Input.GetAxis("Vertical");
 
-       
-        Vector3 movement = new Vector3(horizontal, 0, vertical).normalized;
 
-        
+        Vector3 movement = transform.right * horizontal + transform.forward * vertical;
+
+
         if (movement.magnitude > 0.1f)
         {
-            
-            float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref rotationSpeed, 0.1f);
-            transform.rotation = Quaternion.Euler(0, angle, 0);
-
-            
             transform.Translate(movement * speed * Time.deltaTime, Space.World);
         }
     }

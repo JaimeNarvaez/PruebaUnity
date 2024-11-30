@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-    [SerializeField] float mouseSense;
+    [SerializeField] float mouseSense = 100f;
     [SerializeField] Transform player, playerArms;
 
     float xAxisClamp = 0;
 
     // Update is called once per frame
+
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked; // Bloquear el cursor al inicio
+    }
     void Update()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+       
 
         float rotateX = Input.GetAxis("Mouse X") * mouseSense;
         float rotateY = Input.GetAxis("Mouse Y") * mouseSense;
 
-        xAxisClamp -= rotateX;
+        xAxisClamp += rotateY;
 
         Vector3 rotPlayerArms = playerArms.rotation.eulerAngles;
         Vector3 rotPlayer = player.rotation.eulerAngles;
